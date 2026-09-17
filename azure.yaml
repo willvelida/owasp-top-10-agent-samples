@@ -1,0 +1,21 @@
+name: patchpilot-release-memory
+metadata:
+  template: patchpilot-release-memory@1.0.0
+
+infra:
+  provider: bicep
+  path: infra
+
+services:
+  api:
+    project: ./src/memory-and-context-poisoning
+    host: containerapp
+    docker:
+      path: ./Dockerfile.api
+      context: .
+  web:
+    project: ./src/memory-and-context-poisoning
+    host: containerapp
+    docker:
+      path: ./Dockerfile.ui
+      context: .

@@ -1,0 +1,58 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PatchPilot: Debug API",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "api.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000"
+      ],
+      "cwd": "${workspaceFolder}\\src\\memory-and-context-poisoning",
+      "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "PatchPilot: Debug UI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "ui\\app.py",
+        "--server.port=8501"
+      ],
+      "cwd": "${workspaceFolder}\\src\\memory-and-context-poisoning",
+      "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Northstar Archive: Debug scripted demo",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.presenter",
+      "args": [
+        "--offline",
+        "--scripted"
+      ],
+      "cwd": "${workspaceFolder}\\src\\human-agent-trust-exploitation",
+      "python": "${workspaceFolder}\\src\\human-agent-trust-exploitation\\.venv\\Scripts\\python.exe",
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "PatchPilot: Debug full demo",
+      "configurations": [
+        "PatchPilot: Debug API",
+        "PatchPilot: Debug UI"
+      ],
+      "stopAll": true
+    }
+  ]
+}
